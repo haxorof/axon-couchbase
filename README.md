@@ -1,2 +1,2 @@
 # axon-couchbase
-An EventStore implementation that stores event streams in a Couchbase database
+An [Axon Framework](http://www.axonframework.org/) EventStore implementation which stores event streams in a Couchbase database.
