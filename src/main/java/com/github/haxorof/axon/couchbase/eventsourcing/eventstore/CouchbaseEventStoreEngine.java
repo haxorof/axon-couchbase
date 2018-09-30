@@ -52,7 +52,7 @@ public class CouchbaseEventStoreEngine extends BatchingEventStorageEngine {
             Integer batchSize,
             CouchbaseStoreStrategy storageStrategy,
             CouchbaseTemplate template) {
-        super(serializer, upcasterChain, persistenceExceptionResolver, batchSize);
+        super(serializer, upcasterChain, persistenceExceptionResolver, null, batchSize);
         this.storageStrategy = storageStrategy;
         this.template = template;
     }
@@ -62,7 +62,7 @@ public class CouchbaseEventStoreEngine extends BatchingEventStorageEngine {
             Integer batchSize,
             CouchbaseStoreStrategy storageStrategy,
             CouchbaseTemplate template) {
-        super(serializer, upcasterChain, CouchbaseEventStoreEngine::isDuplicateKeyException, batchSize);
+        super(serializer, upcasterChain, CouchbaseEventStoreEngine::isDuplicateKeyException, null, batchSize);
         this.storageStrategy = storageStrategy;
         this.template = template;
     }
@@ -71,13 +71,13 @@ public class CouchbaseEventStoreEngine extends BatchingEventStorageEngine {
             EventUpcaster upcasterChain,
             CouchbaseStoreStrategy storageStrategy,
             CouchbaseTemplate template) {
-        super(serializer, upcasterChain, CouchbaseEventStoreEngine::isDuplicateKeyException, DEFAULT_BATCH);
+        super(serializer, upcasterChain, CouchbaseEventStoreEngine::isDuplicateKeyException, null, DEFAULT_BATCH);
         this.storageStrategy = storageStrategy;
         this.template = template;
     }
     
     public CouchbaseEventStoreEngine(CouchbaseTemplate template) {
-        super(null, null, CouchbaseEventStoreEngine::isDuplicateKeyException, DEFAULT_BATCH);
+        super(null, null, CouchbaseEventStoreEngine::isDuplicateKeyException, null, DEFAULT_BATCH);
         this.storageStrategy = new DocumentPerAggregateStorageStrategy();
         this.template = template;
     }

@@ -176,11 +176,13 @@ public class EventEntry implements DomainEventData<Object> {
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public SerializedObject<Object> getMetaData() {
         return new SerializedMetaData(serializedMetaData, getRepresentationType());
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public SerializedObject<Object> getPayload() {
         return new SimpleSerializedObject(serializedPayload, getRepresentationType(), payloadType, payloadRevision);
     }

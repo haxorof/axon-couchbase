@@ -67,7 +67,7 @@ public class DocumentPerAggregateStorageStrategy implements CouchbaseStoreStrate
                 bucket.insert(doc);
             } else {
                 bucket.mutateIn(docId)
-                        .arrayAppend("events", e, false)
+                        .arrayAppend("events", e)
                         .execute();
             }
 
